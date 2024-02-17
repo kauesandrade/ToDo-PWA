@@ -1,6 +1,60 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+body{
+  background-color: #A3CEF1;
+  font-family: "Rubik", sans-serif;
+  color: #05060f99;
+}
+
+.sectionAddProduto{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.divCardAdd{
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  font-weight: bold;
+  color: #05060f99;
+  background-color: aliceblue;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  border-radius: 1rem;
+}
+
+.divInput{
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 15px;
+}
+
+.input{
+  border: none;
+  padding: 10px;
+  border-radius: 0.4rem;
+  outline: 1px solid #6c7175;
+  box-shadow: 4px 4px #6c7175;
+}
+
+.input:hover{
+  outline: 2px solid #6c7175;
+}
+
+.buttonCadastrar{
+  border: none;
+  padding: 10px;
+  border-radius: 0.3rem;
+  background-color: aliceblue;
+  color: #05060f99;
+  font-weight: bold;
+  font-family: "Rubik", sans-serif;
+  outline: 2px solid #6c7175;
+  height: 50%;
+}
+
+.buttonCadastrar:hover{
+  background-color: rgb(219, 232, 243);
 }

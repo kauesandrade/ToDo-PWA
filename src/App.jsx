@@ -8,68 +8,68 @@ import CardProduto from "./components/card"
 function App() {
 
   const [nomeProduto, setNomeProduto] = useState("");
-  const [quantidadeProduto, setQuantidadeProduto] = useState(0);
-  const [listaProdutos, setListaProdutos] = useState([{ nome: "leticia", quantidade: 1 }, { nome: "kaue", quantidade: 2 }, { nome: "arthur", quantidade: 3 }]);
+  const [quantidadeProduto, setQuantidadeProduto] = useState("");
+  const [listaProdutos, setListaProdutos] = useState([]);
 
-  function excluirProduto (id){
-    const produtosNovo = listaProdutos
+  useEffect(() => {
+    setListaProdutos(JSON.parse(localStorage.getItem("ListaProdutos")))
+  }, [])
+
+  function excluirProduto(id) {
+    const produtosNovo = [...listaProdutos]
     produtosNovo.splice(id, 1);
     setListaProdutos(produtosNovo)
-    console.log(produtosNovo)
-    localStorage.setItem("ListaProdutos", JSON.stringify(listaProdutos));
-    // setAsyncStorage();
-    // getTasks();
+    localStorage.setItem("ListaProdutos", JSON.stringify(produtosNovo));
   }
 
-  const criarProduto = () =>{
-    if(nomeProduto != "" && quantidadeProduto != 0){
-      const produto = {
-        nome: {nomeProduto},
-        quantidade: {quantidadeProduto}
-      }
-      listaProdutos.push(produto)
-      localStorage.setItem("ListaProdutos", JSON.stringify(listaProdutos));
+  const criarProduto = () => {
+    if (nomeProduto != "" && quantidadeProduto != 0) {
+      const produto = { nome: nomeProduto, quantidade: quantidadeProduto }
+      const produtosNovo = [...listaProdutos]
+      produtosNovo.push(produto)
+      setListaProdutos(produtosNovo)
+      localStorage.setItem("ListaProdutos", JSON.stringify(produtosNovo));
       setNomeProduto("")
-      setQuantidadeProduto(0)
+      setQuantidadeProduto("")
     }
   }
 
-  const mostrarProdutos = useMemo(() =>{
-    return(
-          listaProdutos.map((lista, key) => {
-            return (
-              <CardProduto key={key}
-                id = {key}
-                nome={lista.nome}
-                quantidade={lista.quantidade} 
-                excluirProduto = {excluirProduto}
-                />)
-          }))
-  })
+  const mostrarProdutos = useMemo(() => {
+    return (
+      listaProdutos.map((lista, key) => {
+        return (
+          <CardProduto key={key}
+            id={key}
+            nome={lista.nome}
+            quantidade={lista.quantidade}
+            excluirProduto={excluirProduto}
+          />)
+      }))
+  }, [listaProdutos])
 
   return (
     <>
-      <section>
+      <section className='sectionAddProduto'>
         <h2>
           Lista Produtos
         </h2>
-        <div>
-          <div>
-            <p>Name: </p>
-            <input type="text" name="name" placeholder='Nome: ' value={nomeProduto} onChange={(e)=> setNomeProduto(e.target.value)}/>
+        <div className='divCardAdd'>
+          <div className='divInput'>
+            <label>Name: </label>
+            <input className='input' type="text" name="name" placeholder='Nome: ' value={nomeProduto} onChange={(e) => setNomeProduto(e.target.value)} />
           </div>
-          <div>
-            <p>Quantidade: </p>
-            <input type="number" name="name" placeholder='Quantidade: ' value={quantidadeProduto} onChange={(e)=> setQuantidadeProduto(e.target.value)}/>
+          <div className='divInput'>
+            <label>Quantidade: </label>
+            <input className='input' type="number" name="name" placeholder='Quantidade: ' value={quantidadeProduto} onChange={(e) => setQuantidadeProduto(e.target.value)} />
           </div>
+          <button className='buttonCadastrar' onClick={() => criarProduto()}>Cadastrar Produto</button>
         </div>
-        <button onClick={()=>criarProduto()}>Cadastrar Produto</button>
       </section>
       <section>
-      <div>
         <h3>Produtos</h3>
-      </div>
-      {mostrarProdutos}
+        <div>
+          {mostrarProdutos}
+        </div>
       </section>
     </>
   )
