@@ -3,8 +3,6 @@ import './App.css'
 
 import CardProduto from "./components/card"
 
-
-
 function App() {
 
   const [nomeProduto, setNomeProduto] = useState("");
@@ -16,10 +14,6 @@ function App() {
       setListaProdutos(JSON.parse(localStorage.getItem("ListaProdutos")))
     }
   }, [])
-
-  useEffect(()=>{
-    console.log(listaProdutos)
-  }, [listaProdutos])
 
   function excluirProduto(id) {
     const produtosNovo = [...listaProdutos]
@@ -57,11 +51,11 @@ function App() {
     <main>
       <section className='sectionAddProduto'>
         <h2>
-          Lista Produtos
+          ToDo List
         </h2>
         <div className='divCardAdd'>
           <div className='divInput'>
-            <label>Name: </label>
+            <label>Nome: </label>
             <input className='input' type="text" name="name" placeholder='Nome: ' value={nomeProduto} onChange={(e) => setNomeProduto(e.target.value)} />
           </div>
           <div className='divInput'>
@@ -72,7 +66,7 @@ function App() {
         </div>
       </section>
       <section className='sectionMostrarProdutos'>
-        <h2>Produtos</h2>
+        <h2>Itens</h2>
         {listaProdutos &&
           <div className='divProdutos'>
           {mostrarProdutos}
