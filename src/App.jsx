@@ -17,6 +17,10 @@ function App() {
     }
   }, [])
 
+  useEffect(()=>{
+    console.log(listaProdutos)
+  }, [listaProdutos])
+
   function excluirProduto(id) {
     const produtosNovo = [...listaProdutos]
     produtosNovo.splice(id, 1);
@@ -50,7 +54,7 @@ function App() {
   }, [listaProdutos])
 
   return (
-    <>
+    <main>
       <section className='sectionAddProduto'>
         <h2>
           Lista Produtos
@@ -67,13 +71,16 @@ function App() {
           <button className='buttonCadastrar' onClick={() => criarProduto()}>Cadastrar Produto</button>
         </div>
       </section>
-      <section>
-        <h3>Produtos</h3>
-        <div>
+      <section className='sectionMostrarProdutos'>
+        <h2>Produtos</h2>
+        {listaProdutos &&
+          <div className='divProdutos'>
           {mostrarProdutos}
         </div>
+        }
+        
       </section>
-    </>
+    </main>
   )
 }
 

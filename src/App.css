@@ -6,6 +6,16 @@ body{
   color: #05060f99;
 }
 
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  width: 100%;
+  height: 100%;
+}
+
 .sectionAddProduto{
   display: flex;
   flex-direction: column;
@@ -57,4 +67,35 @@ body{
 
 .buttonCadastrar:hover{
   background-color: rgb(219, 232, 243);
+}
+
+.sectionMostrarProdutos{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.divProdutos{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50rem;
+  padding: 2rem 0;
+  gap: 1rem;
+  background-color: aliceblue;
+  border-radius: 1rem;
+}
+
+@media screen and (max-width: 840px) {
+  .divProdutos{
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .divCardAdd{
+    flex-direction: column;
+    align-items: center;
+  }
 }
