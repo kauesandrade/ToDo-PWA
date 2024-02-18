@@ -14,8 +14,6 @@ function App() {
   useEffect(() => {
     if(JSON.parse(localStorage.getItem("ListaProdutos")) != null){
       setListaProdutos(JSON.parse(localStorage.getItem("ListaProdutos")))
-    }else{
-      setListaProdutos([])
     }
   }, [])
 
