@@ -51,7 +51,7 @@ function App() {
     <main>
       <section className='sectionAddProduto'>
         <h2>
-          ToDo List
+        Lista de Compras
         </h2>
         <div className='divCardAdd'>
           <div className='divInput'>

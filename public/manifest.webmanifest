@@ -1,6 +1,6 @@
 {
-    "name": "ToDo List",
-    "short_name": "To Do",
+    "name": "Lista de Compras",
+    "short_name": "Lista",
     "start_url": "/",
     "display": "standalone",
     "theme_color": "#f0f8ff",
