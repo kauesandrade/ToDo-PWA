@@ -10,5 +10,16 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/serviceWork.js')
+          .then(function () {
+            console.log('service worker registered');
+          })
+          .catch(function () {
+            console.warn('service worker failed');
+          });
+      }
+    </script>
   </body>
 </html>
