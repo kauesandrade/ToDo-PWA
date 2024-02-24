@@ -47,6 +47,12 @@ function App() {
       }))
   }, [listaProdutos])
 
+  const handleClickEnter = (e) =>{
+    if(e.key == "Enter"){
+      criarProduto();
+    }
+  }
+
   return (
     <main>
       <section className='sectionAddProduto'>
@@ -60,7 +66,7 @@ function App() {
           </div>
           <div className='divInput'>
             <label>Quantidade: </label>
-            <input className='input' type="number" name="name" placeholder='Quantidade: ' value={quantidadeProduto} onChange={(e) => setQuantidadeProduto(e.target.value)} />
+            <input className='input' type="number" name="name" placeholder='Quantidade: ' value={quantidadeProduto} onChange={(e) => setQuantidadeProduto(e.target.value)} onKeyPress={handleClickEnter} />
           </div>
           <button className='buttonCadastrar' onClick={() => criarProduto()}>Cadastrar Produto</button>
         </div>
