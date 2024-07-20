@@ -2,13 +2,24 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/toDoIcon.png" />
+    <link rel="icon" type="image/png" href="/icon-192x192.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="manifest" href="/manifest.json" />
-    <title>ToDo List</title>
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <title>Lista de Compras</title>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/serviceWorker.js')
+          .then(function () {
+            console.log('service worker registered');
+          })
+          .catch(function () {
+            console.warn('service worker failed');
+          });
+      }
+    </script>
   </body>
 </html>
